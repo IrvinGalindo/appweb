@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+      <link rel="stylesheet" href="../../jquery-validation-1.16.0/demo/css/screen.css">
+  <script type="text/javascript" src="../../jquery-validation-1.16.0/lib/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/clase.css">
+      <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+        function mensaje(usr,pwd){
+          var parametros = {"usr":usr,"pwd":pwd};
+            $.ajax({
+              type: "POST",
+              url: "login.php",
+              data:parametros,
+              success: function(response){
+                $('#div-mensaje').html(response);
+              }
+          });
+        }
+    </script>       
+</head>
+<body> 
+
+  <div style="text-align: center  ;  width: 100%; "></div>       
+  <div class="wrapper">
+    <form class="form-signin" id="login" name="login" class="cmxform">       
+      <h2 class="form-signin-heading"> <img src="logo benc.png" width="227" height="265"></h2>
+      
+      <p>
+        <input type="text" class="form-control" name="usr" id="usr" placeholder="Usuario" required autofocus />
+      </p>
+      <p>
+        <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Contraseña" required/>      
+        
+      </p>
+      <input class="btn btn-lg btn-primary btn-block" type="button" onclick="mensaje($('#usr').val(),$('#pwd').val());return false;" value="Login" />   
+    </form>
+    <div id="div-mensaje" align="center"></div>
+  </div>
+    
+</body>
+</html>
+
+
